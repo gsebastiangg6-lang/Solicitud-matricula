@@ -1,0 +1,204 @@
+/* =========================================
+   1. VARIABLES Y RESETEO BÁSICO
+   ========================================= */
+:root {
+    --color-primario: #2563eb;
+    --color-primario-hover: #1d4ed8;
+    --color-fondo-claro: #f8fafc;
+    --color-texto: #1e293b;
+    --color-texto-secundario: #64748b;
+    --color-borde: #cbd5e1;
+    --color-blanco: #ffffff;
+    --sombra-suave: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --radio-borde: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Requerimiento 3.i: Tipografía moderna y colores suaves */
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--color-texto);
+    line-height: 1.5;
+}
+
+/* =========================================
+   2. SECCIÓN PRINCIPAL Y CENTRADO (3.h y 5.q)
+   ========================================= */
+.seccion-matricula {
+    min-height: 100vh;
+    width: 100%;
+    /* Requerimiento 3.h: Centrado vertical y horizontal con Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    /* Requerimiento 5.q: Fondo con degradado suave detrás del formulario */
+    background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* =========================================
+   3. CONTENEDOR DEL FORMULARIO Y RESPONSIVIDAD (4.m y 5.p)
+   ========================================= */
+.contenedor-formulario {
+    background-color: var(--color-blanco);
+    /* Requerimiento 4.m: En móviles ocupa el 100% del ancho visible */
+    width: 100%;
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    /* Requerimiento 5.p: Animación de entrada (fade-in + slide) al cargar */
+    animation: entradaFormulario 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.encabezado-formulario {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.encabezado-formulario h1 {
+    font-size: 1.5rem;
+    color: var(--color-texto);
+    margin-bottom: 0.4rem;
+}
+
+.encabezado-formulario p {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+
+/* =========================================
+   4. DISTRIBUCIÓN CON CSS GRID Y CAMPOS (3.i y 3.k)
+   ========================================= */
+.formulario-matricula {
+    /* Requerimiento 3.k: Uso de Grid para distribuir los campos ordenadamente */
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+    gap: 1.15rem;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.grupo-campo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* Requerimiento 3.i: Campos con bordes redondeados, padding y colores suaves */
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--color-texto);
+    background-color: var(--color-fondo-claro);
+    border: 1.5px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.grupo-campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.grupo-campo input::placeholder,
+.grupo-campo textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Efecto visual al hacer foco en un campo */
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    background-color: var(--color-blanco);
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================================
+   5. BOTÓN Y EFECTO HOVER (3.j y 5.o)
+   ========================================= */
+.btn-enviar {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: var(--radio-borde);
+    cursor: pointer;
+    /* Requerimiento 5.o: Transición suave al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Requerimiento 3.j: Cambio de color y sombra en hover */
+.btn-enviar:hover {
+    background-color: var(--color-primario-hover);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
+}
+
+/* =========================================
+   6. ANIMACIÓN DE ENTRADA (5.p)
+   ========================================= */
+@keyframes entradaFormulario {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   7. RESPONSIVIDAD PANTALLAS GRANDES (4.l y 4.n)
+   ========================================= */
+@media (min-width: 1024px) {
+    .contenedor-formulario {
+        /* Requerimiento 4.l: En pantallas >=1024px ancho medio entre 600px y 800px */
+        max-width: 720px;
+        /* Requerimiento 4.n: Ajuste de espaciado para mayor legibilidad */
+        padding: 2.75rem 3rem;
+    }
+
+    .encabezado-formulario h1 {
+        font-size: 1.85rem;
+    }
+
+    .encabezado-formulario p {
+        font-size: 1rem;
+    }
+
+    /* En escritorio organizamos los primeros 4 inputs en 2 columnas */
+    .formulario-matricula {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.35rem 1.5rem;
+    }
+
+    /* El textarea y el botón ocupan las 2 columnas completas */
+    .campo-completo {
+        grid-column: 1 / -1;
+    }
+}
+

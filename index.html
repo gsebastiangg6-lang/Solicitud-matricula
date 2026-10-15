@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Matrícula - Agencia de conducción</title>
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Requerimiento 1.a: Sección con id="matricula" -->
+    <section id="matricula" class="seccion-matricula">
+
+        <div class="contenedor-formulario">
+            <header class="encabezado-formulario">
+                <h1>Solicitud de Matrícula</h1>
+                <p>Complta tus datos para inscribirte en tu curso de conducción.</p>
+            </header>
+
+            <!-- Requerimiento 1.b: Formulario con campos obligatorios -->
+            <form action="#" method="POST" class="formulario-matricula">
+
+                <!-- i. Nombre completo -->
+                <div class="grupo-campo">
+                    <label for="nombre">Nombre completo:</label>
+                    <input 
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresa tu nombre completo"
+                        minlength="3"
+                        required>
+                </div>
+
+                <!-- ii. Correo electrónico -->
+                <div class="grupo-campo">
+                    <label for="correo">Correo electrónico:</label>
+                    <input 
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="Ingresa tu correo electrónico"
+                        required>
+                </div>
+
+                <!-- iii. Número de teléfono (con validación nativa de 7 a 10 d,igitos numéricos) -->
+                <div class="grupo-campo">
+                    <label for="telefono">Número de teléfono:</label>
+                    <input 
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ingresa tu número de teléfono"
+                        pattern="[0-9]{7,10}"
+                        title="El número de teléfono debe tener entre 7 y 10 dígitos numéricos"
+                        required>
+                </div>
+
+                <!-- iv. Tipo de curso -->
+                <div class="grupo-campo">
+                    <label for="tipo-curso">Tipo de curso:</label>
+                    <select id="tipo-curso" name="curso" required>
+                        <option value="" disabled selected>Selecciona una categoría...</option>
+                        <option value="carro">Carro</option>
+                        <option value="moto">Moto</option>
+                        <option value="mixto">Mixto (Carro y Moto)</option>
+                    </select>
+                </div>
+
+                <!-- c. Mensaje o comentario (ocupara las 2 columnas en escritorio) -->
+                <div class="grupo-campo campo-completo">
+                    <label for="mensaje">Mensaje o comentario:</label>
+                    <textarea 
+                        id="mensaje"
+                        name="mensaje"
+                        rows="4"
+                        placeholder="Indica tu disponibilidad de horarios o dudas adicionales"
+                        required></textarea>
+                </div>
+
+                <!-- d. Botón Enviar solicitud -->
+                <div class="grupo-campo" campo-completo>
+                    <button type="submit" class="btn-enviar">Enviar solicitud</button>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+
+</body>
+</html>
